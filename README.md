@@ -1,6 +1,6 @@
 # Liver segmentation with U-net
 
-$$d_i=\alpha * \frac{2*TP}{2*TP+FP+FN} $$
+$$d_i=\alpha * \frac{2* TP}{2*TP+FP+FN} $$
 
 + (1-\alpha) * \frac{TN}{2*TN+FN+FP}
 
