@@ -72,9 +72,9 @@ I designed and tested the network through an iterative approach. Additionally, t
 
     + Formula for my loss function:
 
-$d_i=\alpha*\frac{TP}{2*TP+FP+FN}+(1-\alpha)*\frac{TN}{2*TN+FN+FP}$
+$$d_i=\alpha*\frac{TP}{2*TP+FP+FN}+(1-\alpha)*\frac{TN}{2*TN+FN+FP}$$
 
-$\sum_{i=1}^{n} w_i*(1-d_i)^\gamma*log(d_i)$
+$$\sum_{i=1}^{n} w_i*(1-d_i)^\gamma*log(d_i)$$
 
    
 - The hyperparameters I tuned included: learning rate, gamma (in focal loss), alpha (the balance between the true positive and true negative in the loss function).
