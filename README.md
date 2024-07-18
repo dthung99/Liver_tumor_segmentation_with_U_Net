@@ -1,8 +1,8 @@
 # Liver segmentation with U-net
 
-$$d_i=\alpha * \frac{TP}{2*TP+FP+FN}$$
+$$d_i=\alpha * \frac{TP}{2*TP+FP+FN} + (1-\alpha) *\frac{TN}{2*TN+FN+FP}$$
 
-+(1-\alpha)*\frac{TN}{2*TN+FN+FP}
+
 
 
 This repository is my coursework for Advanced Machine Learning at King's College London. Although I did not register it as an official module, I made sure myself to understand all of the mathematical concepts and finished all of its coursework.
