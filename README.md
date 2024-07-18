@@ -72,7 +72,7 @@ I designed and tested the network through an iterative approach. Additionally, t
 
     + Formula for my loss function:
  
-    $\frac{a}{b}_c$
+    $my_modified_dice_coefficient = \frac{TP}{2*TP+FP+FN} + \frac{TN}{2*TN+FN+FP}$
     
 - The hyperparameters I tuned included: learning rate, gamma (in focal loss), alpha (the balance between the true positive and true negative in the loss function).
 
