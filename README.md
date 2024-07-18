@@ -66,9 +66,13 @@ I designed and tested the network through an iterative approach. Additionally, t
 
     ![over_fitting_result_with_focal_loss](images/over_fitting_result_with_focal_loss.png)
      
-    + I decided to build my own loss function: after 100 epochs, the network overfit 1 sample pretty well! Which is why I decided to go with it.
+    + I decided to build my own loss function by combining the Dice Loss with the Focal Loss concept: after 100 epochs, the network overfit 1 sample pretty well! Which is why I decided to go with it.
 
     ![over_fitting_result_with_my_loss](images/over_fitting_result_with_my_loss.png)
+
+    + Formula for my loss function:
+ 
+    $\frac{a}{b}_c$
     
 - The hyperparameters I tuned included: learning rate, gamma (in focal loss), alpha (the balance between the true positive and true negative in the loss function).
 
