@@ -62,7 +62,7 @@ I designed and tested the network through an iterative approach. Additionally, t
 
     + Dice Loss: the network doesn't learn how to segment the tumor, even after overfitting 1 sample with 300 epochs.
 
-    ![alt text](image/ovet_fitting_result_with_dice_loss.png)
+    ![alt text](images/over_fitting_result_with_dice_loss.png)
 
      or Focal loss alone
 
