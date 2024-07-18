@@ -1,12 +1,5 @@
 # Liver segmentation with U-net
 
-$$d_i=\alpha * \frac{2* TP}{2*TP+FP+FN} +  (1-\alpha) *\frac{2 *TN}{2 *TN+FN+FP}$$
-
- \frac{}{}
-
-
-
-
 This repository is my coursework for Advanced Machine Learning at King's College London. Although I did not register it as an official module, I made sure myself to understand all of the mathematical concepts and finished all of its coursework.
 
 This project try to segment livers and liver tumors from 3D volumes of abdominal CT. Important points:
@@ -77,8 +70,9 @@ I designed and tested the network through an iterative approach. Additionally, t
 
     ![over_fitting_result_with_my_loss](images/over_fitting_result_with_my_loss.png)
 
-    + Formula for my loss function:
+    + Let $d_i$ is a modified dice coefficent for class i, TP, TN, FP, FN is true positive, true negative, false positive, false negative, respectively. The formula the loss function I implemented is:
 
+$$d_i=\alpha * \frac{2* TP}{2*TP+FP+FN} +  (1-\alpha) *\frac{2 *TN}{2 *TN+FN+FP}$$
 
 $$\sum_{i=1}^{n} w_i*(1-d_i)^\gamma*log(d_i)$$
 
