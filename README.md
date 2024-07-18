@@ -1,5 +1,9 @@
 # Liver segmentation with U-net
 
+$$d_i=\alpha$$
+*\frac{TP}{2*TP+FP+FN}+(1-\alpha)*\frac{TN}{2*TN+FN+FP}
+
+
 This repository is my coursework for Advanced Machine Learning at King's College London. Although I did not register it as an official module, I made sure myself to understand all of the mathematical concepts and finished all of its coursework.
 
 This project try to segment livers and liver tumors from 3D volumes of abdominal CT. Important points:
@@ -72,8 +76,6 @@ I designed and tested the network through an iterative approach. Additionally, t
 
     + Formula for my loss function:
 
-$$d_i$$
-=\alpha*\frac{TP}{2*TP+FP+FN}+(1-\alpha)*\frac{TN}{2*TN+FN+FP}
 
 $$\sum_{i=1}^{n} w_i*(1-d_i)^\gamma*log(d_i)$$
 
