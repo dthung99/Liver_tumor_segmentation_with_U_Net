@@ -12,7 +12,7 @@ This project try to segment livers and liver tumors from 3D volumes of abdominal
 
 - The augmentation techniques used: Elastic Deformations, adding Gaussian Noise, and adding Contrast.
 
-- Due to extreme imbalance in the data labels, I decided to combine Dice Loss with Focal Loss for a customed loss function ().
+- Due to extreme imbalance in the data labels, I decided to combine Dice Loss with Focal Loss for a customed loss function (The ratio of 3 labels are: 14000-1100-1).
 
 ## Aims:
 
@@ -60,23 +60,19 @@ I designed and tested the network through an iterative approach. Additionally, t
 
     + How I know what loss is good: The training is really long, which is why I only used the loss function only on 1 sample. And see which one overfit the data better. I just crossed my finger to expect them to work that well on the big dataset.
 
-    + Dice Loss: the network doesn't learn how to segment the tumor, even after overfitting 1 sample with 300 epochs.
+    + Dice Loss or Focal Loss alone: the network doesn't learn how to segment the tumor, even after overfitting 1 sample with 300 epochs.
 
-    ![alt text](images/over_fitting_result_with_dice_loss.png)
+    ![over_fitting_result_with_dice_loss](images/over_fitting_result_with_dice_loss.png)
 
-     or Focal loss alone
+    ![over_fitting_result_with_focal_loss](images/over_fitting_result_with_focal_loss.png)
+     
+    + I decided to build my own loss function: after 100 epochs, the network overfit 1 sample pretty well! Which is why I decided to go with it.
 
-    + Combining those two: after 100 epochs, the network overfit 1 sample pretty well! Which is why I decided to go with it.
-
+    ![over_fitting_result_with_my_loss](images/over_fitting_result_with_my_loss.png)
     
-
-
-
 - The hyperparameters I tuned included: learning rate, gamma (in focal loss), alpha (the balance between the true positive and true negative in the loss function).
 
 ## Result:
-
-I achieved the target loss proposed by the lecturers, and successfully generated the required images. The loss curves showed the potentials for my model to improve with more training epochs (I decided not to spend more of my time anyway). As I was only auditing this course, no official grade was given.
 
 ## Usage:
 
@@ -85,7 +81,6 @@ To use the model, download the .py file and the model folder into your working d
 import ...
 
 Create a new models:
-
 
 If you want to use my pretrained model:
 
