@@ -56,7 +56,7 @@ I designed and tested the network through an iterative approach. Additionally, t
 
     + Contrast: it is used to simulate the different in X-ray absorption. It has three parameters: **central_value**, **contrast_random_level**, and **brightness_random_level**. The pixel values transformation is defined as **new_pixel_value** = (**old_pixel_value**-**central_value**)\***contrast**+**brightness**+**central_value**. The contrast and brightness are sampled from a uniform distribution in \[-**contrast_random_level**, **contrast_random_level**], and \[-**brightness_random_level**, **brightness_random_level**]. By choosing 20 random images and calculate their intensity mean and standard deviation, the **contrast_random_level** is calculate as the *standard deviation* of the *standard deviation*, and **brightness_random_level** is calculated as the *standard deviation* of the *mean*.
 
-- Loss function: due to extreme imbalance of data, I implemented and tested a few loss function: dice loss, dice loss with weights for each class, something similar to dice loss but I sum the dice coefficient of true positives with true negative and weight them with alpha and (1-alpha) respectively, focal loss, my custom loss combining the focal loss with dice loss
+- Loss function: due to extreme imbalance of data, I implemented and tested a few tricks with the loss function to handle the imbalance: dice loss, dice loss with weights for each class, something similar to dice loss but I sum the dice coefficient of true positives with true negative and weight them with alpha and (1-alpha) respectively, focal loss, my custom loss combining the focal loss with dice loss
 
     + How I know what loss is good: The training is really long, which is why I only used the loss function only on 1 sample. And see which one overfit the data better. I just crossed my finger to expect them to work that well on the big dataset.
 
@@ -70,23 +70,20 @@ I designed and tested the network through an iterative approach. Additionally, t
 
     ![over_fitting_result_with_my_loss](images/over_fitting_result_with_my_loss.png)
 
-    + Let $d_i$ is a modified dice coefficent for class i, TP, TN, FP, FN is true positive, true negative, false positive, false negative, respectively. The formula the loss function I implemented is:
+    + Let $d_i$ is a modified dice coefficent for class i, $w_i$ is the weights for labels i, TP, TN, FP, FN is true positive, true negative, false positive, false negative, respectively. The formula for the loss function I implemented is:
 
 $$d_i=\alpha * \frac{2* TP}{2*TP+FP+FN} +  (1-\alpha) *\frac{2 *TN}{2 *TN+FN+FP}$$
 
 $$\sum_{i=1}^{n} w_i*(1-d_i)^\gamma*log(d_i)$$
 
-- The hyperparameters I tuned included: learning rate, gamma (in focal loss), alpha (the balance between the true positive and true negative in the loss function).
+    + Furthermore, I realized that, for class with a very small portion, after a very long training, it tended to force all prediction to be zeros (because the network tries to force the TN pixels to zero, even after their predictions is as low as 0.1 o 0.01). Therefore, I also add a threshhold to the dice loss (if p>0.9 -> p=1.0 and if p<0.1 -> p=0.0)
+
+    + The trainning process is actually me using different loss function to train one network in series rather than in parallel (I'm just using some free GPU anyway...)
 
 ## Result:
 
-## Usage:
+- I achieved a segmentation network that performed really well visually.
 
-To use the model, download the .py file and the model folder into your working directory. Run:
+    ![final_prediction](images/final_prediction.png)
 
-import ...
-
-Create a new models:
-
-If you want to use my pretrained model:
-
+- The dice score for the background, the liver, and the tumor are 0.97, 0.54 and 0.07 respectively. However, these numbers might be misleading and I might need to use another metric like Hausdorff Distance because the data is extremely imbalance. Anyway, I decided not to spend more of my time here.
