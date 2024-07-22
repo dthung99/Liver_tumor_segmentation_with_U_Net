@@ -72,13 +72,13 @@ I designed and tested the network through an iterative approach. Additionally, t
 
     + Let $d_i$ is a modified dice coefficent for class i, $w_i$ is the weights for labels i, TP, TN, FP, FN is true positive, true negative, false positive, false negative, respectively. The formula for the loss function I implemented is:
 
-$$d_i=\alpha * \frac{2* TP}{2*TP+FP+FN} +  (1-\alpha) *\frac{2 *TN}{2 *TN+FN+FP}$$
+    $$d_i=\alpha * \frac{2* TP}{2*TP+FP+FN} +  (1-\alpha) *\frac{2 *TN}{2 *TN+FN+FP}$$
 
-$$\sum_{i=1}^{n} w_i*(1-d_i)^\gamma*log(d_i)$$
- 
-+ Furthermore, I realized that, for class with a very small portion, after a very long training, it tended to force all prediction to be zeros (because the network tries to force the TN pixels to zero, even after their predictions is as low as 0.1 o 0.01). Therefore, I also add a threshhold to the dice loss (if p>0.9 -> p=1.0 and if p<0.1 -> p=0.0)
+    $$\sum_{i=1}^{n} w_i*(1-d_i)^\gamma*log(d_i)$$
+          
+    + Furthermore, I realized that, for class with a very small portion, after a very long training, it tended to force all prediction to be zeros (because the network tries to force the TN pixels to zero, even after their predictions is as low as 0.1 o 0.01). Therefore, I also add a threshhold to the dice loss (if p>0.9 -> p=1.0 and if p<0.1 -> p=0.0)
 
-+ The trainning process is actually me using different loss function to train one network in series rather than in parallel (I'm just using some free GPU anyway...)
+    + The trainning process is actually me using different loss function to train one network in series rather than in parallel (I'm just using some free GPU anyway...)
 
 ## Result:
 
