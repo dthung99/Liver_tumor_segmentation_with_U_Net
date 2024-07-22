@@ -82,7 +82,7 @@ $$\sum_{i=1}^{n} w_i*(1-d_i)^\gamma*log(d_i)$$
 
 ## Result:
 
-- I achieved a segmentation network that performed really well visually.
+- I achieved a segmentation network that performed really well visually ([Link](https://www.kaggle.com/code/conquyhung/u-net-liver-segmentation/notebook)).
 
     ![final_prediction](images/final_prediction.png)
 
