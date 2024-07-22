@@ -78,9 +78,9 @@ $$\sum_{i=1}^{n} w_i*(1-d_i)^\gamma*log(d_i)$$
 
 - &nbsp;
  
-    + Furthermore, I realized that, for class with a very small portion, after a very long training, it tended to force all prediction to be zeros (because the network tries to force the TN pixels to zero, even after their predictions is as low as 0.1 o 0.01). Therefore, I also add a threshhold to the dice loss (if p>0.9 -> p=1.0 and if p<0.1 -> p=0.0)
+ + Furthermore, I realized that, for class with a very small portion, after a very long training, it tended to force all prediction to be zeros (because the network tries to force the TN pixels to zero, even after their predictions is as low as 0.1 o 0.01). Therefore, I also add a threshhold to the dice loss (if p>0.9 -> p=1.0 and if p<0.1 -> p=0.0)
 
-    + The trainning process is actually me using different loss function to train one network in series rather than in parallel (I'm just using some free GPU anyway...)
+ + The trainning process is actually me using different loss function to train one network in series rather than in parallel (I'm just using some free GPU anyway...)
 
 ## Result:
 
