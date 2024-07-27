@@ -86,4 +86,4 @@ I designed and tested the network through an iterative approach. Additionally, t
 
     ![final_prediction](images/final_prediction.png)
 
-- The dice score for the background, the liver, and the tumor are 0.97, 0.54 and 0.07 respectively. However, these numbers might be misleading and I might need to use another metric like Hausdorff Distance because the data is extremely imbalance. Anyway, I decided not to spend more of my time here.
+- The Hausdorff Distance for the background, liver, and tumor segmentations on test dataset are 12, 18, and 7 voxels respectively (the images size is 64x128x128 voxels). The results might improve further for more training, however, I decided not to spend more of my time here.
