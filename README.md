@@ -1,4 +1,4 @@
-# Liver segmentation with U-net
+# Liver segmentation with U-Net
 
 This repository is my coursework for Advanced Machine Learning at King's College London. Although I did not register it as an official module, I made sure myself to understand all of the mathematical concepts and finished all of its coursework.
 
